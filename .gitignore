@@ -20,3 +20,17 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+### .NET ###
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+### ASP.NET Core ###
+appsettings.Development.json
+
+### Tooling ###
+.vs/
