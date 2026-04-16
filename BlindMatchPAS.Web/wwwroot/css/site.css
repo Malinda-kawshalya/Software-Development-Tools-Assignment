@@ -197,3 +197,94 @@ a {
 .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.auth-page {
+  padding: 1.5rem 0;
+}
+
+.auth-card {
+  max-width: 640px;
+  margin: 0 auto;
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: 0 14px 40px rgba(19, 38, 50, 0.12);
+  padding: 1.4rem;
+}
+
+.auth-card-wide {
+  max-width: 1020px;
+}
+
+.auth-head {
+  margin-bottom: 1rem;
+}
+
+.auth-pill {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(17, 94, 89, 0.12);
+  border: 1px solid rgba(17, 94, 89, 0.2);
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+}
+
+.auth-title {
+  margin-top: 0.7rem;
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+}
+
+.auth-subtitle {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.2rem;
+}
+
+.auth-form {
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.auth-aside {
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(236, 159, 5, 0.08), rgba(17, 94, 89, 0.08));
+}
+
+.auth-aside h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.auth-aside ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.auth-aside li {
+  margin-bottom: 0.5rem;
+}
+
+.auth-links {
+  display: grid;
+  gap: 0.35rem;
+}
+
+@media (max-width: 960px) {
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+}

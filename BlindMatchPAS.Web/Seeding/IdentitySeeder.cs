@@ -72,6 +72,49 @@ public static class IdentitySeeder
                 return;
             }
         }
+        else
+        {
+            // Keep seeded demo users consistent even if the database already existed.
+            // This avoids login issues caused by stale usernames/passwords/lockout state.
+            var hasIdentityChanges = false;
+
+            if (!string.Equals(user.UserName, email, StringComparison.OrdinalIgnoreCase))
+            {
+                user.UserName = email;
+                hasIdentityChanges = true;
+            }
+
+            if (!string.Equals(user.Email, email, StringComparison.OrdinalIgnoreCase))
+            {
+                user.Email = email;
+                hasIdentityChanges = true;
+            }
+
+            if (!user.EmailConfirmed)
+            {
+                user.EmailConfirmed = true;
+                hasIdentityChanges = true;
+            }
+
+            if (hasIdentityChanges)
+            {
+                await userManager.UpdateAsync(user);
+            }
+
+            var resetToken = await userManager.GeneratePasswordResetTokenAsync(user);
+            var resetPasswordResult = await userManager.ResetPasswordAsync(user, resetToken, password);
+            if (!resetPasswordResult.Succeeded)
+            {
+                var hasPassword = await userManager.HasPasswordAsync(user);
+                if (!hasPassword)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                }
+            }
+
+            await userManager.ResetAccessFailedCountAsync(user);
+            await userManager.SetLockoutEndDateAsync(user, null);
+        }
 
         if (!await userManager.IsInRoleAsync(user, role))
         {
